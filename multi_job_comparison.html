@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="utf-8">
+    <title>NC Salaries - Compare Multiple Jobs at One Institution</title>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+
+    <script charset="utf-8" type="text/javascript" src="https://d3js.org/d3.v7.min.js"></script>
+
+    <script type="text/javascript" src="d3panels/d3panels.min.js"></script>
+    <link rel=stylesheet type="text/css" href="d3panels/d3panels.min.css">
+
+    <link rel=stylesheet type="text/css" href="custom.css">
+    <style>
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        #form {
+            background-color: #EEE;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+        }
+
+        .form-section label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        select {
+            width: 100%;
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        .job-input-container {
+            position: relative;
+        }
+
+        #job-title-input {
+            width: calc(100% - 12px);
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        #job-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            max-height: 200px;
+            overflow-y: auto;
+            background: white;
+            border: 1px solid #ccc;
+            border-top: none;
+            z-index: 1000;
+            display: none;
+        }
+
+        .job-suggestion-item {
+            padding: 8px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+
+        .job-suggestion-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        #selected-jobs {
+            margin-top: 10px;
+            min-height: 30px;
+        }
+
+        .selected-job-tag {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 5px 5px 5px 0;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+
+        .remove-job {
+            margin-left: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .checkbox-container {
+            margin-top: 15px;
+        }
+
+        .checkbox-container label {
+            display: inline;
+            font-weight: normal;
+            margin-left: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #chart {
+            margin-top: 30px;
+            overflow-x: auto;
+        }
+
+        .legend {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .legend h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .legend-item {
+            display: inline-block;
+            margin-right: 20px;
+            margin-bottom: 8px;
+        }
+
+        .legend-color {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        .info-message {
+            color: #666;
+            font-style: italic;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="index.html" class="back-link">← Back to Home</a>
+    
+    <h3>Compare Multiple Job Titles at One Institution</h3>
+
+    <div id="form">
+        <div class="form-section">
+            <label for="institution">Institution:</label>
+            <select id="institution" name="institution">
+            </select>
+        </div>
+
+        <div class="form-section">
+            <label for="job-title-input">Job Titles (type to search, select multiple):</label>
+            <div class="job-input-container">
+                <input id="job-title-input" type="text" placeholder="Type to search for job titles...">
+                <div id="job-suggestions"></div>
+            </div>
+            <div id="selected-jobs"></div>
+        </div>
+
+        <div class="form-section">
+            <label for="school-filter">Filter by School/College (optional):</label>
+            <select id="school-filter" name="school-filter" multiple size="5">
+            </select>
+            <p class="info-message">Hold Ctrl (Cmd on Mac) to select multiple</p>
+        </div>
+
+        <div class="form-section">
+            <label for="department-filter">Filter by Department/Division (optional):</label>
+            <select id="department-filter" name="department-filter" multiple size="5">
+            </select>
+            <p class="info-message">Hold Ctrl (Cmd on Mac) to select multiple</p>
+        </div>
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="group-by-title" name="group-by-title">
+            <label for="group-by-title">Group by Title (instead of by institution level)</label>
+        </div>
+
+        <button id="submit-comparison">Generate Comparison</button>
+    </div>
+
+    <div id="legend"></div>
+
+    <div id="chart"></div>
+
+    <div id="text_output"></div>
+
+    <div id="footer">
+        <hr/>
+        <p>Job titles are as listed by the NC system. Department/Division affiliations to Schools/Colleges were gathered from NC system websites and may not be accurate or comprehensive.</p>
+        <p>Salary data last updated: February, 2026
+        <p>All data taken from publicly available and <a href="https://uncdm.northcarolina.edu/salaries/index.php">searchable sources</a></p>
+        <p>Based on an App built by: <a href="https://kbroman.org">Karl Broman</a><br/>
+          based on a design
+          from <a href="https://fosstodon.org/@haraldkliems">Harald Kliems
+            @HaraldKliems</a>
+    </div>
+
+    <script charset="utf-8" type="text/javascript" src="multi_job_comparison.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="utf-8">
+    <title>NC Salaries - Job Title Comparison</title>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+
+    <script charset="utf-8" type="text/javascript" src="https://d3js.org/d3.v7.min.js"></script>
+
+    <script type="text/javascript" src="d3panels/d3panels.min.js"></script>
+    <link rel=stylesheet type="text/css" href="d3panels/d3panels.min.css">
+
+    <link rel=stylesheet type="text/css" href="custom.css">
+    <style>
+        #institution-forms {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .institution-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+        
+        .institution-title {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .job-search-box {
+            width: 95%;
+            padding: 8px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .job-suggestions {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            background-color: white;
+            display: none;
+        }
+        
+        .job-suggestion-item {
+            padding: 8px;
+            cursor: pointer;
+        }
+        
+        .job-suggestion-item:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .selected-jobs {
+            margin-top: 10px;
+        }
+        
+        .selected-job-tag {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 5px 5px 5px 0;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        
+        .remove-job {
+            margin-left: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .submit-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        #submit-comparison {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        #submit-comparison:hover {
+            background-color: #45a049;
+        }
+        
+        #comparison-chart {
+            margin-top: 30px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive grid for institution forms */
+        @media screen and (max-width: 1200px) {
+            #institution-forms {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            #institution-forms {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="index.html" class="back-link">← Back to Home</a>
+    
+    <h3>Compare Job Titles Across NC Institutions</h3>
+
+    <div id="institution-forms">
+        <!-- Institution sections will be dynamically generated here -->
+    </div>
+
+    <div class="submit-section">
+        <button id="submit-comparison">Generate Comparison</button>
+    </div>
+
+    <div id="comparison-chart">
+    </div>
+
+    <div id="text_output">
+    </div>
+
+    <div id="footer">
+        <hr/>
+        <p>Job titles are as listed by the NC system. Department/Division affiliations to Schools/Colleges were gathered from NC system websites and may not be accurate or comprehensive.</p>
+        <p>Salary data last updated: February, 2026
+        <p>All data taken from publicly available and <a href="https://uncdm.northcarolina.edu/salaries/index.php">searchable sources</a></p>
+        <p>Based on an App built by: <a href="https://kbroman.org">Karl Broman</a><br/>
+          based on a design
+          from <a href="https://fosstodon.org/@haraldkliems">Harald Kliems
+            @HaraldKliems</a>
+    </div>
+
+    <script charset="utf-8" type="text/javascript" src="job_comparison.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="utf-8">
+    <title>NC Salaries</title>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+
+    <script charset="utf-8" type="text/javascript" src="https://d3js.org/d3.v7.min.js"></script>
+
+    <script type="text/javascript" src="d3panels/d3panels.min.js"></script>
+    <link rel=stylesheet type="text/css" href="d3panels/d3panels.min.css">
+
+    <link rel=stylesheet type="text/css" href="custom.css">
+</head>
+
+
+<body>
+    <a href="index.html" class="back-link">← Back to Home</a>
+  <h3>NC Salaries</h3>
+
+  <div class="row">
+
+  <div id="form">
+      <input id="last_name" type="text"
+             name="last_name" placeholder="Last name">
+
+      <p>
+      <input id="first_name" type="text" placeholder="First name" name="first_name">
+
+      <p>Institution:
+        <select id="institution" name="institution">
+        </select>
+
+      <p>School/college:
+        <select id="school" name="school" multiple size="5">
+        </select>
+
+      <p>
+      <button id="submit">Submit</button>
+  </div>
+
+
+  <div class="main">
+  <div id="chart">
+  </div>
+
+  <div id="text_output">
+  </div>
+  </div> <!-- div.main -->
+  </div> <!-- div.row -->
+
+  <div id="footer">
+    <hr/>
+
+    <p>Job titles are as listed by the NC system. Department/Division affiliations to Schools/Colleges were gathered from NC system websites and may not be accurate or comprehensive.</p>
+    <p>Salary data last updated: February, 2026
+    <p>All data taken from publicly available and <a href="https://uncdm.northcarolina.edu/salaries/index.php">searchable sources</a></p>
+    <p>Based on an App built by: <a href="https://kbroman.org">Karl Broman</a><br/>
+      based on a design
+      from <a href="https://fosstodon.org/@haraldkliems">Harald Kliems
+        @HaraldKliems</a>
+  </div>
+
+  <script charset="utf-8" type="text/javascript" src="script.js"></script>
+</body>

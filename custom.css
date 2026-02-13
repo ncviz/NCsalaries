@@ -1,0 +1,48 @@
+body {
+    font-family: sans-serif;
+}
+
+div#chart {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+div#chart svg {
+    max-width: 100%;
+    height: auto;
+}
+
+div#form {
+    background-color: #EEE;
+    padding: 6px;
+    width: 250px;
+}
+
+button {
+    background-color: #CCC;
+}
+
+div#text_output {
+    padding: 6px;
+}
+
+/* wide screen: put form and chart side-by-side */
+@media screen and (min-width: 750px) {
+    div.row {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    div#text_output {
+        margin-left: 20px;
+        margin-right: 80px;
+    }
+}
+
+/* narrow screen: put chart below form; make form full-width */
+@media screen and (max-width: 749px) {
+    div#form {
+        width: 100%;
+    }
+}

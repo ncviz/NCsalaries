@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="utf-8">
+    <title>NC Salaries</title>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+
+    <link rel=stylesheet type="text/css" href="custom.css">
+    <style>
+        .landing-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        
+        .landing-info {
+            margin-bottom: 40px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+        
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .landing-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 40px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+            width: 100%;
+            max-width: 500px;
+            transition: background-color 0.3s;
+        }
+        
+        .landing-button:hover {
+            background-color: #45a049;
+        }
+        
+        .landing-button:active {
+            background-color: #3d8b40;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing-container">
+        <h1>NC Salaries</h1>
+        
+        <div class="landing-info">
+            <p>A tool to explore the current, reported base salaries of UNC system as found on the publicly available <a href="https://uncdm.northcarolina.edu/salaries/index.php">UNC Salary Information Database.</a> The following Institutions/Campuses are included: ASU, ECU, ECSU, FSU, NCA&T, NCCU, NCSU, UNCA, UNC-CH, UNCC, UNC System Office, UNCG, UNCP, UNCW, UNCSA, WCU, WSSU, and NCSSM.</p>
+            <p>Job titles and home departments are taken directly as reported by the UNC Salary Information Database. Job titles may not fit directly into a job category (e.g. "Assistant Professor in Geography" rather than "Assistant Professor) or may have spelling errors that prevent individuals from being included in job category groups (e.g. "Asstistant Professor" rather than "Assistant Professor"). These differences--whether in error or purposeful--have not been corrected from the source data.</p>
+            <p>For data organization purposes, home departments/divisions have been sorted into Schools/Colleges when applicable. These data were taken from UNC system websites and may not be accurate or comprehensive. Help add or correct these here: https://forms.gle/e3TR9QRLTzCk5kEu7</p>
+    
+        </div>
+        
+        <div class="button-container">
+            <a href="employee_search.html" class="landing-button">
+                Search by employee in an NC institution
+            </a>
+            
+            <a href="job_comparison.html" class="landing-button">
+                Compare job titles across NC institutions
+            </a>
+            
+            <a href="multi_job_comparison.html" class="landing-button">
+                Compare multiple job titles at one institution
+            </a>
+        </div>
+        
+        <div class="abbreviations-section">
+    <h2>Institution Abbreviations</h2>
+    <table class="abbreviations-table">
+        <thead>
+            <tr>
+                <th>Abbreviation</th>
+                <th>Full Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ASU</td>
+                <td>Appalachian State University</td>
+            </tr>
+            <tr>
+                <td>ECU</td>
+                <td>East Carolina University</td>
+            </tr>
+            <tr>
+                <td>ECSU</td>
+                <td>Elizabeth City State University</td>
+            </tr>
+            <tr>
+                <td>FSU</td>
+                <td>Fayetteville State University</td>
+            </tr>
+            <tr>
+                <td>NCA&T</td>
+                <td>North Carolina A&T State University</td>
+            </tr>
+            <tr>
+                <td>NCCU</td>
+                <td>North Carolina Central University</td>
+            </tr>
+            <tr>
+                <td>NCSU</td>
+                <td>North Carolina State University</td>
+            </tr>
+            <tr>
+                <td>UNCA</td>
+                <td>University of North Carolina at Asheville</td>
+            </tr>
+            <tr>
+                <td>UNC-CH</td>
+                <td>University of North Carolina at Chapel Hill</td>
+            </tr>
+            <tr>
+                <td>UNCC</td>
+                <td>University of North Carolina at Charlotte</td>
+            </tr>
+            <tr>
+                <td>UNCG</td>
+                <td>University of North Carolina at Greensboro</td>
+            </tr>
+            <tr>
+                <td>UNCP</td>
+                <td>University of North Carolina at Pembroke</td>
+            </tr>
+            <tr>
+                <td>UNCW</td>
+                <td>University of North Carolina Wilmington</td>
+            </tr>
+            <tr>
+                <td>UNCSA</td>
+                <td>University of North Carolina School of the Arts</td>
+            </tr>
+            <tr>
+                <td>WCU</td>
+                <td>Western Carolina University</td>
+            </tr>
+            <tr>
+                <td>WSSU</td>
+                <td>Winston-Salem State University</td>
+            </tr>
+            <tr>
+                <td>NCSSM</td>
+                <td>North Carolina School of Science and Mathematics</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    </div>
+    
+    
+
+    <div id="footer">
+        <hr/>
+        <p>Job titles are as listed by the NC system. Department/Division affiliations to Schools/Colleges were gathered from NC system websites and may not be accurate or comprehensive.</p>
+        <p>Salary data last updated: February, 2026
+        <p>All data taken from publicly available and <a href="https://uncdm.northcarolina.edu/salaries/index.php">searchable sources</a></p>
+        <p>Based on an App built by: <a href="https://kbroman.org">Karl Broman</a><br/>
+          based on a design
+          from <a href="https://fosstodon.org/@haraldkliems">Harald Kliems
+            @HaraldKliems</a>
+    </div>
+</body>
+</html>
