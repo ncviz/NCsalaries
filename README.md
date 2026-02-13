@@ -1,6 +1,8 @@
 ## NC Salaries
 
-This repository provides a tool for comparing NC university employees' salaries to others with the same title across different institutions. It is based on the design of Harald Kliems's TTC Salary mapping tool and Karl Broman's UW-Madison salary visualization.
+This repository provides a tool for comparing UNC systemy employees' salaries to others with the same title across different institutions. It is based on the design of Harald Kliems's TTC Salary mapping tool and Karl Broman's UW-Madison salary visualization.
+
+All data taken from publicly accessible sources.
 
 - <https://ncviz.github.io/NCsalaries>
 
